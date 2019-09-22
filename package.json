@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/hikaru7719/memo.git",
   "author": "hikaru7719",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.6.3"
+  }
 }
