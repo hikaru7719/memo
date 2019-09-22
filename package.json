@@ -1,0 +1,8 @@
+{
+  "name": "memo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hikaru7719/memo.git",
+  "author": "hikaru7719",
+  "license": "MIT"
+}
