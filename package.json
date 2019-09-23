@@ -7,9 +7,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
-    "lint": "eslint -c .eslintrc.json src/** "
+    "lint": "eslint -c .eslintrc.json pages/** --ext .js,.ts,.tsx"
   },
   "devDependencies": {
+    "@types/node": "^12.7.5",
+    "@types/react": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
     "eslint": "^6.4.0",
