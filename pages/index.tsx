@@ -1,31 +1,69 @@
-import React, { useState } from "react";
 import {
-  TextField,
-  Stack,
-  IStackProps,
-  PrimaryButton
-} from "office-ui-fabric-react";
+  Form,
+  Select,
+  InputNumber,
+  DatePicker,
+  Switch,
+  Slider,
+  Button
+} from "antd";
 
-const Example: React.FC = () => {
-  const columnProps: Partial<IStackProps> = {
-    tokens: { childrenGap: 25 },
-    styles: { root: { width: 800 } }
-  };
-  const columnProps2: Partial<IStackProps> = {
-    styles: { root: { width: 100 } }
-  };
-  const [count, setCount] = useState(0);
-  return (
-    <Stack horizontal horizontalAlign="center" tokens={{ childrenGap: 50 }}>
-      <Stack {...columnProps}>
-        <TextField label="title" />
-        <TextField label="memo" multiline rows={3} />
-        <Stack.Item align="center" styles={columnProps2}>
-          <PrimaryButton text="Primary" />
-        </Stack.Item>
-      </Stack>
-    </Stack>
-  );
-};
+const FormItem = Form.Item;
+const Option = Select.Option;
 
-export default Example;
+export default () => (
+  <div style={{ marginTop: 100 }}>
+    <Form layout="horizontal">
+      <FormItem
+        label="Input Number"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 8 }}
+      >
+        <InputNumber
+          size="large"
+          min={1}
+          max={10}
+          style={{ width: 100 }}
+          defaultValue={3}
+          name="inputNumber"
+        />
+        <a href="#">Link</a>
+      </FormItem>
+
+      <FormItem label="Switch" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+        <Switch defaultChecked />
+      </FormItem>
+
+      <FormItem label="Slider" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+        <Slider defaultValue={70} />
+      </FormItem>
+
+      <FormItem label="Select" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+        <Select size="large" defaultValue="lucy" style={{ width: 192 }}>
+          <Option value="jack">jack</Option>
+          <Option value="lucy">lucy</Option>
+          <Option value="disabled" disabled>
+            disabled
+          </Option>
+          <Option value="yiminghe">yiminghe</Option>
+        </Select>
+      </FormItem>
+
+      <FormItem
+        label="DatePicker"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 8 }}
+      >
+        <DatePicker name="startDate" />
+      </FormItem>
+      <FormItem style={{ marginTop: 48 }} wrapperCol={{ span: 8, offset: 8 }}>
+        <Button size="large" type="primary" htmlType="submit">
+          OK
+        </Button>
+        <Button size="large" style={{ marginLeft: 8 }}>
+          Cancel
+        </Button>
+      </FormItem>
+    </Form>
+  </div>
+);

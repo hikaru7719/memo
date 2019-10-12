@@ -6,7 +6,7 @@
   "author": "hikaru7719",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node --project tsconfig.server.json server.ts",
+    "dev": "next",
     "build": "next build",
     "lint": "eslint -c .eslintrc.json pages/** --ext .js,.ts,.tsx"
   },
@@ -17,6 +17,7 @@
     "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
+    "core-js": "3",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
@@ -24,12 +25,16 @@
     "nodemon": "^1.19.2",
     "prettier": "^1.18.2",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.3",
+    "webpack": "^4.41.1"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "antd": "^3.23.6",
+    "babel-plugin-import": "^1.12.2",
     "express": "^4.17.1",
     "next": "^9.0.6",
-    "office-ui-fabric-react": "^7.37.0",
+    "null-loader": "^3.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   }
