@@ -1,19 +1,23 @@
 import {
+  Button,
+  DatePicker,
   Form,
+  Layout,
   Select,
   InputNumber,
-  DatePicker,
   Switch,
-  Slider,
-  Button
+  Slider
 } from "antd";
-
+import { Header } from "../component/layout/Header";
+import { Top } from "../component/Top";
 const FormItem = Form.Item;
 const Option = Select.Option;
 
 export default () => (
-  <div style={{ marginTop: 100 }}>
-    <Form layout="horizontal">
+  <Layout>
+    <Header />
+    <Top />
+    {/* <Form layout="horizontal">
       <FormItem
         label="Input Number"
         labelCol={{ span: 8 }}
@@ -64,6 +68,6 @@ export default () => (
           Cancel
         </Button>
       </FormItem>
-    </Form>
-  </div>
+    </Form> */}
+  </Layout>
 );
