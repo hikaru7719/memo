@@ -14,6 +14,6 @@ func main() {
 		panic(err)
 	}
 	grpcServer := grpc.NewServer()
-	pb.HelloServiceServer(grpcServer, nil)
+	pb.RegisterHelloServiceServer(grpcServer, nil)
 	grpcServer.Serve(lis)
 }
