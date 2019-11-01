@@ -2,8 +2,11 @@ import { Card, Icon } from "antd";
 import { Row, Col } from "antd";
 import { Typography } from "antd";
 import { Button } from "antd";
+import * as React from "react";
 export default () => {
   const Title = Typography.Title;
+  const [hoge, setHoge] = React.useState<string | undefined>("hoge");
+  setHoge(undefined);
   return (
     <div style={{ marginTop: 200 }}>
       <Row type="flex" justify="center">
@@ -20,7 +23,6 @@ export default () => {
                 Login with Google
               </Button>
               <Button
-                type="ghost"
                 block
                 style={{
                   marginTop: 15,
