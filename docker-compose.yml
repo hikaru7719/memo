@@ -1,0 +1,14 @@
+version: "3"
+services:
+  grpc:
+    build:
+      context: ./server
+      dockerfile: cmd/grpc/Dockerfile
+  gateway:
+    build:
+      context: ./server
+      dockerfile: cmd/gateway/Dockerfile
+    ports:
+      - 8081:8081
+    depends_on:
+      - grpc

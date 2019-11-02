@@ -13,7 +13,7 @@ import (
 
 // gRPCServerEndpoint is port of grpc server
 // This Var should move to configulation files
-const gRPCServerEndpoint = ":8080"
+const gRPCServerEndpoint = "grpc:8080"
 
 func run() error {
 	ctx := context.Background()
