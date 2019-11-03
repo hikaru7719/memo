@@ -24,3 +24,6 @@ protoc-grpc-gateway:
 cp-proto:
 	cp ../proto/*.proto proto/
 
+.PHONY: testdb
+testdb:
+	docker run --name memo-postgredb -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=mypassword -d postgres:9.6
