@@ -5,8 +5,8 @@ import (
 
 	"google.golang.org/grpc"
 
+	"github.com/hikaru7719/memo/server/controller"
 	pb "github.com/hikaru7719/memo/server/proto"
-	"github.com/hikaru7719/memo/server/usecase"
 )
 
 func main() {
@@ -15,6 +15,6 @@ func main() {
 		panic(err)
 	}
 	grpcServer := grpc.NewServer()
-	pb.RegisterHealthcheckServiceServer(grpcServer, &usecase.HealthcheckServiceImpl{})
+	pb.RegisterHealthcheckServiceServer(grpcServer, &controller.HealthcheckServiceImpl{})
 	grpcServer.Serve(lis)
 }
