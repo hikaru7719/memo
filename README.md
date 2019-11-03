@@ -4,11 +4,13 @@ memo is application for recording your activity.
 
 # Directory
 
+```
 ├── build # This directory contains Dockerfile for build .proto file  
 ├── client # client app  
 ├── proto # .proto file  
 ├── server # server app  
 └── docker-compose.yml
+```
 
 # Build
 
