@@ -8,9 +8,7 @@ var Config = NewConfig()
 // NewConfig returns Configulation Object
 func NewConfig() *viper.Viper {
 	v := viper.New()
-	// Default database host is "db" because of using Docker-Compose
 	v.SetDefault("db.host", "localhost")
-	// Default database port is "5432" because of using PostgresSQL
 	v.SetDefault("db.port", "5432")
 	v.SetDefault("db.name", "postgres")
 	v.SetDefault("db.user", "postgres")
