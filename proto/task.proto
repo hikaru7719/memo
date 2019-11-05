@@ -1,0 +1,34 @@
+syntax = "proto3";
+package task;
+
+import "google/api/annotations.proto";
+
+option go_package = "proto";
+
+service TaskService {
+  rpc CreateTask(CreateTaskRequest) returns (Task) {
+    option (google.api.http) = {
+      post : "/tasks"
+      body : "task"
+    };
+  }
+}
+
+enum Status {
+  UNKNOWN = 0;
+  TODO = 1;
+  PROGRESS = 2;
+  DONE = 3;
+}
+
+message Task {
+  uint32 taskID = 1;
+  string name = 2;
+  string explanation = 3;
+  uint32 tagID = 4;
+  string tagName = 5;
+  Status status = 6;
+  string userID = 7;
+}
+
+message CreateTaskRequest { Task task = 1; }

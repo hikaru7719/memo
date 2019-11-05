@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/hikaru7719/memo/server/config"
-	"github.com/hikaru7719/memo/server/entity"
+	"github.com/hikaru7719/memo/server/domain"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
@@ -24,6 +24,6 @@ func init() {
 		panic(err)
 	}
 	db = d
-	db.AutoMigrate(&entity.Done{})
-	db.AutoMigrate(&entity.Tag{})
+	db.AutoMigrate(&domain.Task{})
+	db.AutoMigrate(&domain.Tag{})
 }

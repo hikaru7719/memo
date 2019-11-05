@@ -5,17 +5,18 @@ import (
 	"testing"
 
 	"github.com/google/uuid"
-	"github.com/hikaru7719/memo/server/entity"
+	"github.com/hikaru7719/memo/server/domain"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestFind(t *testing.T) {
 	repo := NewTaskRepository()
 	id := fmt.Sprintf("ID%s", uuid.New())
-	data := &entity.Done{
+	data := &domain.Task{
 		Name:        "TestDoneTask",
 		Explanation: "Explanation For Task",
 		TagID:       1,
+		Status:      domain.Done,
 		UserID:      id,
 	}
 	handleTest(t, func(t *testing.T) {
@@ -27,8 +28,8 @@ func TestFind(t *testing.T) {
 	}, data, repo)
 }
 
-func handleTest(t *testing.T, f func(t *testing.T), done *entity.Done, repository *TaskRepository) {
-	repository.Create(done)
-	defer repository.Delete(done)
+func handleTest(t *testing.T, f func(t *testing.T), task *domain.Task, repository *TaskRepository) {
+	repository.Create(task)
+	defer repository.Delete(task)
 	f(t)
 }

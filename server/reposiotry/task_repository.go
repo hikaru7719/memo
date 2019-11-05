@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/hikaru7719/memo/server/entity"
+	"github.com/hikaru7719/memo/server/domain"
 )
 
 // NewTaskRepository create TaskRepository Object
@@ -10,29 +10,28 @@ func NewTaskRepository() *TaskRepository {
 }
 
 // TaskRepository returns resouces about task
-type TaskRepository struct {
-}
+type TaskRepository struct{}
 
-// Find gets all Done task matching user id
-func (t *TaskRepository) Find(userID string) ([]entity.Done, error) {
-	dones := make([]entity.Done, 0, 20)
-	if result := db.Where("user_id = ?", userID).Find(&dones); result.Error != nil {
-		return nil, result.Error
+// Find gets all Task matching user id
+func (t *TaskRepository) Find(userID string) ([]domain.Task, error) {
+	tasks := make([]domain.Task, 0, 20)
+	if result := db.Where("user_id = ?", userID).Find(&tasks); result.Error != nil {
+		return tasks, result.Error
 	}
-	return dones, nil
+	return tasks, nil
 }
 
-// Create insert new Done Record
-func (t *TaskRepository) Create(done *entity.Done) (*entity.Done, error) {
-	if result := db.Create(done); result.Error != nil {
-		return nil, result.Error
+// Create inserts new Task Record
+func (t *TaskRepository) Create(task *domain.Task) (*domain.Task, error) {
+	if result := db.Create(task); result.Error != nil {
+		return task, result.Error
 	}
-	return done, nil
+	return task, nil
 }
 
-// Delete delete record matching done id
-func (t *TaskRepository) Delete(done *entity.Done) error {
-	if result := db.Delete(done); result.Error != nil {
+// Delete deletes record matching task id
+func (t *TaskRepository) Delete(task *domain.Task) error {
+	if result := db.Delete(task); result.Error != nil {
 		return result.Error
 	}
 	return nil
