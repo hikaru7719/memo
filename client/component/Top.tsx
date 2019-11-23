@@ -49,9 +49,9 @@ export const Top = () => {
               <Typography>
                 <Title style={{ fontSize: "30px" }}>
                   <Icon type="edit" style={{ margin: "2px" }} />
-                  Finishd Task
+                  Task
                 </Title>
-                <Text>完了したタスクを記録します。</Text>
+                <Text>個人のタスクを記録します。</Text>
               </Typography>
             </Card>
           </Col>

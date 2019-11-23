@@ -5,8 +5,6 @@ import { Button } from "antd";
 import * as React from "react";
 export default () => {
   const Title = Typography.Title;
-  const [hoge, setHoge] = React.useState<string | undefined>("hoge");
-  setHoge(undefined);
   return (
     <div style={{ marginTop: 200 }}>
       <Row type="flex" justify="center">
