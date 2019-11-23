@@ -12,10 +12,10 @@ func NewTaskRepository() *TaskRepository {
 // TaskRepository returns resouces about task
 type TaskRepository struct{}
 
-// Find gets all Task matching user id
-func (t *TaskRepository) Find(userID string) ([]domain.Task, error) {
+// Find gets 20 Tasks matching user id
+func (t *TaskRepository) Find(userID string, startAt int) ([]domain.Task, error) {
 	tasks := make([]domain.Task, 0, 20)
-	if result := db.Where("user_id = ?", userID).Find(&tasks); result.Error != nil {
+	if result := db.Offset(startAt).Where("user_id = ?", userID).Find(&tasks); result.Error != nil {
 		return tasks, result.Error
 	}
 	return tasks, nil
@@ -32,6 +32,14 @@ func (t *TaskRepository) Create(task *domain.Task) (*domain.Task, error) {
 // Delete deletes record matching task id
 func (t *TaskRepository) Delete(task *domain.Task) error {
 	if result := db.Delete(task); result.Error != nil {
+		return result.Error
+	}
+	return nil
+}
+
+// CreateAssociation inserts relation record
+func (t *TaskRepository) CreateAssociation(task *domain.Task, tag *domain.Tag) error {
+	if result := db.Model(task).Association("Tags").Append(tag); result != nil {
 		return result.Error
 	}
 	return nil

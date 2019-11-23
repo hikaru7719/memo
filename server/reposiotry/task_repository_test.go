@@ -15,12 +15,11 @@ func TestFind(t *testing.T) {
 	data := &domain.Task{
 		Name:        "TestDoneTask",
 		Explanation: "Explanation For Task",
-		TagID:       1,
 		Status:      domain.Done,
 		UserID:      id,
 	}
 	handleTest(t, func(t *testing.T) {
-		actual, err := repo.Find(id)
+		actual, err := repo.Find(id, 0)
 		if err != nil {
 			t.Errorf(fmt.Sprintf("error: error in Find(%s) method because of %s", id, err))
 		}

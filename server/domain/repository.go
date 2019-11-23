@@ -1,14 +1,15 @@
 package domain
 
 type TaskRepositoy interface {
-	Find(string) ([]Task, error)
+	Find(string, int) ([]Task, error)
 	Create(*Task) (*Task, error)
 	Delete(*Task) error
+	CreateAssociation(*Task, *Tag) error
 }
 
 type TagRepository interface {
-	Find(string) ([]Tag, error)
+	Find(int) ([]Tag, error)
 	Create(*Tag) (*Tag, error)
 	Delete(*Tag) error
-	FindByName(string, string) (*Tag, error)
+	FindByName(string) (*Tag, error)
 }

@@ -22,13 +22,17 @@ enum Status {
 }
 
 message Task {
-  uint32 taskID = 1;
+  uint32 id = 1;
   string name = 2;
   string explanation = 3;
-  uint32 tagID = 4;
-  string tagName = 5;
   Status status = 6;
   string userID = 7;
+  repeated Tag tags = 8;
+}
+
+message Tag {
+  uint32 id = 1;
+  string name = 2;
 }
 
 message CreateTaskRequest { Task task = 1; }

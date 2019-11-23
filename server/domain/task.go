@@ -23,14 +23,13 @@ type Task struct {
 	gorm.Model
 	Name        string
 	Explanation string
-	TagID       uint
 	Status      Status
 	UserID      string
+	Tags        []*Tag `gorm:"many2many:task_tags"`
 }
 
 // Tag units ToDo tasks or Done tasks
 type Tag struct {
 	gorm.Model
-	Name   string
-	UserID string
+	Name string
 }
