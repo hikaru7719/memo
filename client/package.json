@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "start": "next start",
     "lint": "eslint -c .eslintrc.json pages/** --ext .js,.ts,.tsx"
   },
   "devDependencies": {
@@ -31,6 +32,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "antd": "^3.23.6",
+    "axios": "^0.19.0",
     "babel-plugin-import": "^1.12.2",
     "express": "^4.17.1",
     "next": "^9.0.6",

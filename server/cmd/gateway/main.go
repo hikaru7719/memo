@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
 
@@ -21,13 +22,18 @@ func run() error {
 	defer canccel()
 
 	mux := runtime.NewServeMux()
+	newMux := handlers.CORS(
+		handlers.AllowedMethods([]string{"GET", "POST", "OPTIONS"}),
+		handlers.AllowedOrigins([]string{"http://localhost:3000"}),
+		handlers.AllowedHeaders([]string{"content-type", "application/json"}),
+	)(mux)
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 	err := gw.RegisterHealthcheckServiceHandlerFromEndpoint(ctx, mux, gRPCServerEndpoint, opts)
 	if err != nil {
 		return err
 	}
 
-	return http.ListenAndServe(":8081", mux)
+	return http.ListenAndServe(":8081", newMux)
 }
 
 func main() {

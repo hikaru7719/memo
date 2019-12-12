@@ -1,12 +1,15 @@
 import { Form, Input, Select, Typography, Tag, Icon, Button } from "antd";
+import axios from "axios";
 import TextArea from "antd/lib/input/TextArea";
 import { CustomTag } from "./CustomTag";
 import * as React from "react";
 
 export const Task = () => {
   const [loading, setLoading] = React.useState(false);
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = async (e: React.MouseEvent) => {
     setLoading(true);
+    const resp = await axios.post("http://gateway:8081/healthcheck");
+    console.log(resp.data);
     setTimeout(() => {
       setLoading(false);
     }, 5000);

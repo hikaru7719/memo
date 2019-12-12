@@ -12,3 +12,14 @@ services:
       - 8081:8081
     depends_on:
       - grpc
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/app
+    depends_on:
+      - gateway
+  networks: 
